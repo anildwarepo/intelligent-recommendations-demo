@@ -1,0 +1,17 @@
+.left-nav {
+    background-color: #ffffff;
+}
+
+.top-nav-bar {
+
+    background-color: #F1F8E9;
+}
+
+.search-area {
+
+    display: flex;
+    width: 100%;
+    max-width: 100%;
+    margin: 0 auto;
+    justify-content: center;
+}

@@ -1,0 +1,32 @@
+import React from "react";
+import { useMsal } from "@azure/msal-react";
+import DropdownButton from "react-bootstrap/DropdownButton";
+import Dropdown from "react-bootstrap/esm/Dropdown";
+
+/**
+ * Renders a sign-out button
+ */
+export const SignOutButton = (props) => {
+    const { instance } = useMsal();
+
+    const handleLogout = (logoutType) => {
+        if (logoutType === "popup") {
+            instance.logoutPopup({
+                postLogoutRedirectUri: "/",
+                mainWindowRedirectUri: "/"
+            });
+        } else if (logoutType === "redirect") {
+            instance.logoutRedirect({
+                postLogoutRedirectUri: "/",
+            });
+        }
+    }
+    return (
+        <DropdownButton variant="secondary" className="ml-auto" drop="left" title="Sign Out">
+           
+            <Dropdown.Item as="span" >Logged in as {props.accounts[0].name}</Dropdown.Item>
+            <Dropdown.Item as="button" onClick={() => handleLogout("popup")}>Sign out using Popup</Dropdown.Item>
+            <Dropdown.Item as="button" onClick={() => handleLogout("redirect")}>Sign out using Redirect</Dropdown.Item>
+        </DropdownButton>
+    )
+}
