@@ -7,11 +7,11 @@ from azure.identity import ClientSecretCredential
 
 
 def getImageUrls():
-    dict_from_csv = pd.read_csv('<blob url>', header=None, index_col=0, squeeze=True).to_dict()
+    dict_from_csv = pd.read_csv(os.getenv('BLOB_URL'), header=None, index_col=0, squeeze=True).to_dict()
     return dict_from_csv
 
 def getItemDetails():
-    dict_from_csv = pd.read_csv('<blob url>', header=None, index_col=0, squeeze=True).to_dict()
+    dict_from_csv = pd.read_csv(os.getenv('BLOB_URL'), header=None, index_col=0, squeeze=True).to_dict()
     return dict_from_csv
 
 itemUrls = getImageUrls()
